@@ -1,5 +1,4 @@
 import unittest
-
 import time
 
 import os, sys, io
@@ -75,5 +74,6 @@ class TestBannedWords(unittest.TestCase):
 
         self.assertLess(endTime, 1)
 
+    
 if __name__ == '__main__':
     unittest.main()

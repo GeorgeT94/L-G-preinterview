@@ -28,6 +28,7 @@ class BannedWords():
     def getProseFileName(self):
         return self.__proseFileName
 
+    
     def printCensoredDocument(self):
 
         with open(self.__proseFileName) as f:
@@ -40,5 +41,5 @@ class BannedWords():
                         print(word, end="")
 
 bannedWords = BannedWords()
-bannedWords.setBannedWords("../Tests/BannedWords/banned_Words.txt")
+bannedWords.setBannedWords("../Tests/BannedWords/lotsOfWords.txt")
 bannedWords.printCensoredDocument()
