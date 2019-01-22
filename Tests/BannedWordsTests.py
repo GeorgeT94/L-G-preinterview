@@ -16,19 +16,19 @@ class TestBannedWords(unittest.TestCase):
                  
     def test_getBannedWordsList(self):
        
-        self.bannedWords.setBannedWords(fileName ="Tests/BannedWords/testWords.txt")
+        self.bannedWords.setBannedWords(fileName ="BannedWords/testWords.txt")
 
         self.assertEqual(self.bannedWords.getBannedWordsList(), {"fudge", "secret"}, "Should be {fudge, secret}")
 
     def test_setBannedWordsList(self):
 
-        self.bannedWords.setBannedWords(fileName="Tests/BannedWords/oneWord.txt")
+        self.bannedWords.setBannedWords(fileName="BannedWords/oneWord.txt")
 
         self.assertEqual(self.bannedWords.getBannedWordsList(),{'simple'} )
 
     def test_printSensoredDocument_NoBannedWords(self):
         self.bannedWords.__bannedWords = {}
-        self.bannedWords.setProseFileName("Tests/Prose/basicText.txt")
+        self.bannedWords.setProseFileName("Prose/basicText.txt")
 
         self.bannedWords.printCensoredDocument()
         sys.stdout = sys.__stdout__
@@ -37,9 +37,9 @@ class TestBannedWords(unittest.TestCase):
 
     def test_printSensoredDocument_CensorOneWord(self):
         
-        self.bannedWords.setBannedWords(fileName="Tests/BannedWords/oneWord.txt")
+        self.bannedWords.setBannedWords(fileName="BannedWords/oneWord.txt")
        
-        self.bannedWords.setProseFileName(fileName="Tests/Prose/basicText.txt")
+        self.bannedWords.setProseFileName(fileName="Prose/basicText.txt")
 
         self.bannedWords.printCensoredDocument()
         sys.stdout = sys.__stdout__
@@ -47,8 +47,8 @@ class TestBannedWords(unittest.TestCase):
         self.assertEqual(self.capturedOutput.getvalue(), "A ****** sentence", "should be 'A ****** sentence'")
 
     def test_printSensoredDocument_CensorMultipleWords(self):
-        self.bannedWords.setBannedWords("Tests/BannedWords/fudge-secret.txt")
-        self.bannedWords.setProseFileName("Tests/Prose/fudgeProse.txt")
+        self.bannedWords.setBannedWords("BannedWords/fudge-secret.txt")
+        self.bannedWords.setProseFileName("Prose/fudgeProse.txt")
 
         self.bannedWords.printCensoredDocument()
         sys.stdout = sys.__stdout__
@@ -56,8 +56,8 @@ class TestBannedWords(unittest.TestCase):
         self.assertEqual(self.capturedOutput.getvalue(),"There are some words that one must not say such as ***** and ****** - everything else is fine!", "should **** secret and fudge" )
 
     def test_printSensoredDocument_LotsOfBannedWords(self):
-        self.bannedWords.setBannedWords("Tests/BannedWords/lotsOfWords.txt")
-        self.bannedWords.setProseFileName("Tests/Prose/prose.txt")
+        self.bannedWords.setBannedWords("BannedWords/lotsOfWords.txt")
+        self.bannedWords.setProseFileName("Prose/prose.txt")
 
         startTime = time.time()
         self.bannedWords.printCensoredDocument()
@@ -66,8 +66,8 @@ class TestBannedWords(unittest.TestCase):
         self.assertLess(endTime, 0.100)
 
     def test_printSensoredDocument_LargeTextLotsOfBannedWords(self):
-        self.bannedWords.setBannedWords("Tests/BannedWords/lotsOfWords.txt")
-        self.bannedWords.setProseFileName("Tests/Prose/longProse.txt")
+        self.bannedWords.setBannedWords("BannedWords/lotsOfWords.txt")
+        self.bannedWords.setProseFileName("Prose/longProse.txt")
 
         startTime = time.time()
         self.bannedWords.printCensoredDocument()

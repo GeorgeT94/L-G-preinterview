@@ -4,7 +4,7 @@ import re
 
 class BannedWords():
 
-    __proseFileName = "Tests/Prose/longProse.txt"
+    __proseFileName = "../Tests/Prose/prose.txt"
     __bannedWords = set()
 
     def setProseFileName(self , fileName):
@@ -40,5 +40,5 @@ class BannedWords():
                         print(word, end="")
 
 bannedWords = BannedWords()
-bannedWords.setBannedWords("Tests/BannedWords/banned_Words.txt")
+bannedWords.setBannedWords("../Tests/BannedWords/banned_Words.txt")
 bannedWords.printCensoredDocument()
