@@ -39,6 +39,6 @@ class BannedWords():
                     else:
                         print(word, end="")
 
-# bannedWords = BannedWords()
-# bannedWords.setBannedWords("Tests/BannedWords/banned_Words.txt")
-# bannedWords.printCensoredDocument()
+bannedWords = BannedWords()
+bannedWords.setBannedWords("Tests/BannedWords/banned_Words.txt")
+bannedWords.printCensoredDocument()
