@@ -13,8 +13,9 @@ class BannedWords():
     def setBannedWords(self, fileName):
 
         bannedWords = set()
-        with open(fileName) as f:
-            for line in f:
+
+        with open(fileName) as file:
+            for line in file:
                 if line[-1] == "\n":
                     line = line[:-1]
                 bannedWords.add(line.lower())
@@ -31,8 +32,10 @@ class BannedWords():
     
     def printCensoredDocument(self):
 
-        with open(self.__proseFileName) as f:
-            for line in f:
+        with open(self.__proseFileName) as file:
+            for line in file:
+
+                #splits all words and punctuation into a list
                 splitLine = re.findall(r"[\w']+|[ .,!?;-]", line)
                 for word in splitLine:
                     if word.lower() in self.__bannedWords:

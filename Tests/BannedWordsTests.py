@@ -10,6 +10,7 @@ class TestBannedWords(unittest.TestCase):
 
     def setUp(self):
         self.bannedWords = BannedWords()
+        
         self.capturedOutput = io.StringIO()                 
         sys.stdout = self.capturedOutput
                  
@@ -30,7 +31,7 @@ class TestBannedWords(unittest.TestCase):
         self.bannedWords.setProseFileName("Prose/basicText.txt")
 
         self.bannedWords.printCensoredDocument()
-        sys.stdout = sys.__stdout__
+        sys.stdout = sys.__stdout__  #this gets the std output
 
         self.assertEqual(self.capturedOutput.getvalue(), "A simple sentence", "should be 'A simple sentence '")
 
@@ -41,7 +42,7 @@ class TestBannedWords(unittest.TestCase):
         self.bannedWords.setProseFileName(fileName="Prose/basicText.txt")
 
         self.bannedWords.printCensoredDocument()
-        sys.stdout = sys.__stdout__
+        sys.stdout = sys.__stdout__  #this gets the std output
 
         self.assertEqual(self.capturedOutput.getvalue(), "A ****** sentence", "should be 'A ****** sentence'")
 
@@ -50,7 +51,9 @@ class TestBannedWords(unittest.TestCase):
         self.bannedWords.setProseFileName("Prose/fudgeProse.txt")
 
         self.bannedWords.printCensoredDocument()
-        sys.stdout = sys.__stdout__
+
+        
+        sys.stdout = sys.__stdout__ #this gets the std output
 
         self.assertEqual(self.capturedOutput.getvalue(),"There are some words that one must not say such as ***** and ****** - everything else is fine!", "should **** secret and fudge" )
 
